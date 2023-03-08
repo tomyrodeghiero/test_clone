@@ -7,6 +7,7 @@ const User = require("./models/User.js");
 const Place = require("./models/Place.js");
 const Booking = require("./models/Booking.js");
 const cookieParser = require("cookie-parser");
+const Post = require("./models/Post");
 const imageDownloader = require("image-downloader");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const multer = require("multer");
@@ -62,9 +63,15 @@ function getUserDataFromReq(req) {
   });
 }
 
-app.get("/api/test", (req, res) => {
+app.get("/api/test", async (req, res) => {
   mongoose.connect(
     "mongodb+srv://blog:blog-rest-api@cluster0.xih2rrz.mongodb.net/?retryWrites=true&w=majority"
+  );
+  res.json(
+    await Post.find()
+      .populate("author", ["username"])
+      .sort({ createdAt: -1 })
+      .limit(20)
   );
   res.json("test ok");
 });
