@@ -67,7 +67,7 @@ app.get("/api/test", async (req, res) => {
   mongoose.connect(
     "mongodb+srv://blog:blog-rest-api@cluster0.xih2rrz.mongodb.net/?retryWrites=true&w=majority"
   );
-  res.json("test ok");
+  res.json(await Place.find());
 });
 
 app.post("/api/register", async (req, res) => {
