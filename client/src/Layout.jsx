@@ -21,20 +21,7 @@ export default function Layout() {
         Inicio - Lista de Lecturas -
         <span className="posts__pathname--bold"> Posts</span>
       </h5>
-      {posts.length > 0 &&
-        posts.map((post, index) => (
-          <div className="posts__container">
-            <Card
-              _id={post._id}
-              cover={post.cover}
-              title={post.title}
-              number={index}
-              author={post.author}
-              createdAt={post.createdAt}
-              summary={post.summary}
-            />
-          </div>
-        ))}
+      {posts.length > 0 && posts.map((post, index) => <div>{post.title}</div>)}
     </div>
   );
 }
