@@ -4,7 +4,7 @@ import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
-  const [posts, setPosts] = useState < any > [];
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetch("https://test-clone-iota.vercel.app/api/test").then((response) => {
